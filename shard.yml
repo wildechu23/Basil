@@ -1,0 +1,14 @@
+name: basil
+version: 0.1.0
+
+authors:
+  - wildechu <wildechu23@gmail.com>
+
+crystal: 0.28.0
+
+license: MIT
+
+dependencies:
+  sdl:
+    github: ysbaddaden/sdl.cr
+    branch: master
