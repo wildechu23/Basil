@@ -1,0 +1,3 @@
+module Leafgem::Renderer
+
+end

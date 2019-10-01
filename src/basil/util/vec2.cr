@@ -1,4 +1,3 @@
-
 struct Basil::Util::Vec2(T)
   include Enumerable(T)
   include Comparable(T)
