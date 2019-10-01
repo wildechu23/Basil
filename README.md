@@ -1,6 +1,6 @@
 # Basil
 
-2D engine written in Crystal
+2D engine written in Crystal based on Leafgem(https://github.com/tfcat/Leafgem)
 
 ## Installation
 
