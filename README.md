@@ -1,6 +1,6 @@
-# basil
+# Basil
 
-TODO: Write a description here
+2D engine written in Crystal
 
 ## Installation
 
