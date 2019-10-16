@@ -59,11 +59,28 @@ module Basil::Renderer
   end
 
   def draw_buffer
-
+    if (ba_r = @@renderer)
+      if (s_s = @@screen_surface)
+        texture = SDL::Texture.from(s_s, ba_r)
+        output_rect = self.calculate_onscreen_rect
+        ba_r.copy(
+          texture,
+          SDL::Rect.new(0, 0, texture.width, texture.height),
+          output_rect
+        )
+      end
+    end
   end
 
   def calculate_onscreen_rect
-
+    if (window = @@window)
+      c_size = window.current_size
+      @@scale = Math.min(c_size.x.to_f / size.x, c_size.y.to_f / size.y).to_f32
+      ratio = size.x.to_f/size.y
+      @@offset.x = Math.max(((c_size - c_size.y * ratio) / 2), 0).to_i
+      @@offset.y = Math.max(((c_size - c_size.x * ratio) / 2), 0).to_i
+      SDL::Rect.new(@@offset.x, @@offset.y, (size.x * @@scale).to_i, (size.y * @@scale).to_i)
+    end
   end
 
   def present
