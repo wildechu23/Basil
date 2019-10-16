@@ -15,12 +15,27 @@ module Basil::Renderer
 
   @@background_color = SDL::Color.new(255,255,255)
 
-  def create()
-
+  def create(title : String, width : Int32, height : Int32, pixel_scale : Float32)
+    if (@@window == nil)
+      make_window(title, width, height, pixel_scale)
+    end
   end
 
-  def make_window()
+  def make_window(title : String, width : Int32, height : Int32, pixel_scale : Float32)
+    @@window = Basil::Window.new(title, height, width, true)
+    @@scale = pixel_scale
+    @@size = Vec2.from(width/pixel_scale, height/pixel_scale).to_i
 
+    @@screen_surface_pointer = LibSDL.create_rgb_surface(0, @@size.x, @@size.y, 32, 0, 0, 0, 0)
+    if (ssp = screen_surface_pointer)
+      @@screen_surface = SDL::Surface.new(ssp)
+    end
+    if (window = @@window)
+      @@renderer = SDL::Renderer.new(window.window, SDL::Renderer::Flags::ACCELERATED)
+      if (renderer = @@renderer)
+        renderer.draw_blend_mode = LibSDL::BlendMode::BLEND
+      end
+    end
   end
 
   def clear_screen(r,g,b)
