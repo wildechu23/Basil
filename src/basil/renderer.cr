@@ -16,6 +16,7 @@ module Basil::Renderer
   @@background_color = SDL::Color.new(255,255,255)
 
   def create(title : String, width : Int32, height : Int32, pixel_scale : Float32)
+    #check for window
     if (@@window == nil)
       make_window(title, width, height, pixel_scale)
     end
@@ -39,21 +40,25 @@ module Basil::Renderer
   end
 
   def clear_screen(r,g,b)
+    #change color for clear, then change back
     if (ba_r = Basil::Renderer.renderer)
       old_color = ba_r.draw_color
       ba_r.draw_color = SDL::Color[r,g,b,255]
       ba_r.clear
       ba_r.draw_color = old_color
     end
+    #fill background color
     if (surf = Basil::Renderer.surface)
       surf.fill(@@background_color.r, @@background_color.g, @@background_color.b)
     end
   end
 
+  #bground color setter
   def set_background_color(r,g,b)
     @@background_color = SDL::Color.new(r,g,b)
   end
 
+  #surface getter
   def surface
     @@screen_surface
   end
