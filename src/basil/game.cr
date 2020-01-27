@@ -1,12 +1,12 @@
-# TODO: self.game_update
-# Basil::KeyManager
+# TODO: Basil::KeyManager
 
-DEBUG_ALPHA = "!+#$%&'()*+,-./" \
-              "0123456789:;<=>?" \
-              "@ABCDEFGHIJKLMNO" \
-              "PQRSTUVWXYZ[\\]^_" \
-              "`abcdefghijklmno" \
-              "pqrstuvwxyz{|}~ "
+DEBUG_ALPHA =
+  " !+#$%&'()*+,-./" \
+  "0123456789:;<=>?" \
+  "@ABCDEFGHIJKLMNO" \
+  "PQRSTUVWXYZ[\\]^_" \
+  "`abcdefghijklmno" \
+  "pqrstuvwxyz{|}~ "
 
 lib LibSDL
   fun ticks = SDL_GetTicks : Int32
@@ -17,7 +17,7 @@ class Basil::Game
   # array of all objects
   @@loop = {} of String => Array(Basil::Object)
   # func runs every loop
-  @@loopfunc = Proc(Nil)?
+  @@loopfunc : Proc(Nil)?
 
   @@show_hitboxes = false
 
@@ -137,6 +137,7 @@ class Basil::Game
     @@debug_string_buffer << string
   end
 
+  # TODO
   def self.draw_debug
   end
 
@@ -152,4 +153,5 @@ class Basil::Game
       end
     end
     @@to_destroy = [] of Basil::Object
+  end
 end
