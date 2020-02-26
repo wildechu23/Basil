@@ -1,6 +1,6 @@
 class Basil::Mouse::Click
   property pos : Vec2(Int32)
-  property event : SDL::Mouse::MouseButton?
+  property event : SDL::Event::MouseButton?
   property held : Bool
 
   # TODO: Update `#held?` and `#pressed?` automatically
