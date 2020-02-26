@@ -26,4 +26,5 @@ class Basil::Mouse::Click
   def update(@event, @pressed = false)
     @pos = Vec2.from @event.x, @event.y
     @held = !@pressed
+  end
 end
