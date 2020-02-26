@@ -91,9 +91,9 @@ module Basil::Mouse::Mouse
     @@scroll.update event
   end
 
-  def primary; @@buttons[1_u8]?
-  def secondary; @@buttons[3_u8]?
-  def middle; @@button[2u8]?
+  def primary; @@buttons[1_u8]? end
+  def secondary; @@buttons[3_u8]? end
+  def middle; @@button[2u8]? end
 
   def button(id : UInt8)
     @@buttons[id]?
