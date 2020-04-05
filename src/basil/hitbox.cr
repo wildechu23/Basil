@@ -50,7 +50,14 @@ class Basil::Hitbox
   end
 
   def meeting_tile?(xoffset, yoffset, tile, accuracy = 2)
-
+    # insert corners
+    points_to_check = [
+      # top left, top right, bottom left, bottom right
+      [self.x + self.hitbox.x + xoffset, self.y + self.hitbox.y + yoffset],
+      [self.x + self.hitbox.x + self.hitbox.w + xoffset, self.y + self.hitbox.y + yoffset],
+      [self.x + self.hitbox.x + xoffset, self.y + self.hitbox.y + self.hitbox.h + yoffset],
+      [self.x + self.hitbox.x + self.hitbox.w + xoffset, self.y + self.hitbox.y + self.hitbox.h + yoffset],
+    ]
   end
 
   def meeting_tile_layer?(xoffset, yoffset, tile, accuracy = 2)
